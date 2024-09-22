@@ -19,7 +19,7 @@ namespace Norm.Library.Core.Models
                 yield return new ValidationResult("TableName field is required", new[] { nameof(TableName) });
             }
 
-            if ((Columns == null || Columns.Length == 0) || string.IsNullOrWhiteSpace(Column))
+            if ((Columns == null || Columns.Length == 0) && string.IsNullOrWhiteSpace(Column))
             {
                 yield return new ValidationResult(
                 "Either 'Columns' or 'Column' must be provided.",

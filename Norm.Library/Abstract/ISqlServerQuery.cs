@@ -4,6 +4,6 @@ namespace Norm.Library.Abstract
 {
     public interface ISqlServerQuery
     {
-        Task<List<T>> QueryAsync<T>(Query query) where T : class;
+        Task<List<T>> QueryAsync<T>(Query query, SqlConnectionModel sqlConnection) where T : class;
     }
 }
