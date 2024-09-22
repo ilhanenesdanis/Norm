@@ -1,7 +1,7 @@
 ﻿namespace Norm.Library.Abstract
 {
-    public interface ISqlServerEngine<T> where T : class
+    public interface ISqlServerEngine
     {
-        List<T> Execute<T>();
+        List<T> Execute<T>() where T : class;
     }
 }
