@@ -1,13 +1,13 @@
 ﻿using Norm.Library.Concrete;
+using NormTest.Console.Models;
 
 SqlServerQuery sqlServerQuery = new SqlServerQuery();
 
-var result = await sqlServerQuery.QueryAsync<string>(new Norm.Library.Core.Models.Query
+var result = await sqlServerQuery.QueryAsync<List<UserVM>>(new Norm.Library.Core.Models.Query
 {
     TableName = "Users",
     Column = "FirstName",
     Size = 50,
-
 }, new Norm.Library.Core.Models.SqlConnectionModel
 {
     Database = "LoginExample",
@@ -17,3 +17,7 @@ var result = await sqlServerQuery.QueryAsync<string>(new Norm.Library.Core.Model
     UserId = ""
 });
 
+foreach (var user in result)
+{
+    Console.WriteLine(user.FirstName);
+}
