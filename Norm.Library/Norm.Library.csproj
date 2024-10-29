@@ -1,13 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageLicenseFile>LICENCE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<Title>Norm.Library - Minimal and Fast ORM Tool</Title>
+		<Authors>İlhan Enes Daniş</Authors>
+		<Description>Norm.Library is a lightweight and performance-oriented ORM tool designed to simplify database operations in .NET projects. It allows you to easily write SQL queries and optimizes the process of mapping data between C# objects and the database.</Description>
+		<Copyright>© 2024 İlhan Enes Daniş. Licensed under the MIT License.</Copyright>
+		<PackageProjectUrl>https://github.com/ilhanenesdanis</PackageProjectUrl>
+		<PackageIcon>NORM.png</PackageIcon>
+		<RepositoryUrl>https://github.com/ilhanenesdanis/Norm</RepositoryUrl>
+		<PackageTags>ORM;Sql Server</PackageTags>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+	</ItemGroup>
 
+	<ItemGroup>
+	  <None Include="..\..\..\..\Downloads\NORM.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="licence\LICENCE.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
 </Project>
