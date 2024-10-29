@@ -3,7 +3,6 @@ using Norm.Library.Core.Models;
 using Norm.Library.Helpers;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace Norm.Library.Concrete
 {
@@ -15,19 +14,16 @@ namespace Norm.Library.Concrete
 
             using (var dbHelper = new DatabaseConnectionHelper(sqlConnection.GetConnectionString()))
             {
-                SqlConnection connection = dbHelper.OpenConnection();
-
-                if (connection != null)
+                await using (SqlConnection connection = await dbHelper.OpenConnectionAsync())
                 {
-                    using (SqlCommand cmd =
-                           new SqlCommand($"select  {GetColumns(query.Column, query.Columns)}  from {query.TableName}",
-                               connection))
+                    if (connection == null)
+                        return default;
+
+                    using (SqlCommand cmd = new SqlCommand($"select  {GetColumns(query.Column, query.Columns)}  from {query.TableName}", connection))
                     using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         return QueryViewHelper.GetQueryView<T>(reader);
                 }
             }
-
-            return default;
         }
 
         private string GetColumns(string? queryColumn, string[]? queryColumns)

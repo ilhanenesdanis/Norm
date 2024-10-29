@@ -3,10 +3,10 @@ using NormTest.Console.Models;
 
 SqlServerQuery sqlServerQuery = new SqlServerQuery();
 
-var result = await sqlServerQuery.QueryAsync<List<UserVM>>(new Norm.Library.Core.Models.Query
+var result = await sqlServerQuery.QueryAsync<UserVM>(new Norm.Library.Core.Models.Query
 {
     TableName = "Users",
-    Column = "FirstName",
+    Columns = new string[] { "Email", "Phone" },
     Size = 50,
 }, new Norm.Library.Core.Models.SqlConnectionModel
 {
@@ -17,7 +17,10 @@ var result = await sqlServerQuery.QueryAsync<List<UserVM>>(new Norm.Library.Core
     UserId = ""
 });
 
-foreach (var user in result)
-{
-    Console.WriteLine(user.FirstName);
-}
+
+Console.WriteLine(result.Email + " " + result.Phone);
+
+//foreach (var user in result)
+//{
+//    Console.WriteLine(user.Email + " " + user.Phone);
+//}
